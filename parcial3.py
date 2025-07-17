@@ -20,6 +20,8 @@ class Inventory: #este inventario es un componente y tendrá la lista de product
         self.products = [p for p in self.products if p.name != product_name]
 
     def list_products(self):
+        if not self.products:
+            print("No hay productos en el inventario.")
         for product in self.products:
             print(product)
 
