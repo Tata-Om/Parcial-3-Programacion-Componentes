@@ -25,5 +25,40 @@ class Inventory: #este inventario es un componente y tendrá la lista de product
         for product in self.products:
             print(product)
 
-#componente3
+#componente3 Inventory manager
+ 
+class InventoryManager:
+    def __init__(self):
+        self.inventory = Inventory()
+
+    def menu(self):
+        while True:
+            print("\n1. Agregar producto")
+            print("2. Eliminar producto")
+            print("3. Ver inventario")
+            print("4. Salir")
+            opcion = input("Elige una opción: ")
+
+            if opcion == '1':
+                name = input("Nombre del producto: ")
+                quantity = int(input("Cantidad: "))
+                price = float(input("Precio: "))
+                product = Product(name, quantity, price)
+                self.inventory.add_product(product)
+                print(f"{name} agregado al inventario.")
+            elif opcion == '2':
+                name = input("Nombre del producto a eliminar: ")
+                self.inventory.remove_product(name)
+                print(f"{name} eliminado del inventario (si existía).")
+            elif opcion == '3':
+                print("\nInventario actual:")
+                self.inventory.list_products()
+            elif opcion == '4':
+                print("Saliendo del programa.")
+                break
+            else:
+                print("Opción no válida, intenta de nuevo.")
+if __name__ == "__main__":
+    manager = InventoryManager()
+    manager.menu()
 
